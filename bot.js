@@ -13,17 +13,13 @@ const formatter = require('./formatter');
 const bot = new Telegraf(process.env.BOT_TOKEN); //сюда помещается токен, который дал botFather
 
 bot.start((ctx) => {
-    const job = new CronJob('*/10 * * * * *', function() {
+    const job = new CronJob('*/6 * * * * *', function() {
         const response = requester.getQuoteCurrency();
         response.then((value) => {
-            ctx.reply(`name: ${value.body.data[0].name}, USD price: ${value.body.data[0].quote.USD.price}`);
-            console.log(value.body.data[0].quote.USD);
+            ctx.reply(formatter.formatArrayToMessage(value.body.data));
         })
-        // ctx.reply('You will see this message every 10second');
-        // console.log('You will see this message every 10second');
       }, null, true, 'America/Los_Angeles');
       job.start();
-    // ctx.reply('Welcome');
 }); //ответ бота на команду /start
 // bot.help((ctx) => ctx.reply('Send me a sticker')); //ответ бота на команду /help
 bot.command('quit', (ctx) => {
