@@ -1,9 +1,9 @@
-exports.formatArrayToMessage = (arr) => {
+export default async function (arr: any): Promise<string> {
     try {
-        let finalMessage = '';
+        let finalMessage: string = '';
 
-        arr.forEach(element => {
-            let price = parseFloat(element.quote.USD.price).toFixed(2).toLocaleString('ru-RU');
+        arr.forEach((element: any) => {
+            let price = parseFloat(element.quote.USD.price).toFixed(2).toLocaleString();
             let currencyItemString = `${element.name.toUpperCase()}: ${price} $`;
 
             let arrowIcon24h = element.quote.USD.percent_change_24h > 0 ? '\u{2197}' : '\u{2198}';
@@ -17,10 +17,8 @@ exports.formatArrayToMessage = (arr) => {
         });
 
         return finalMessage;
-
     } catch (err) {
         console.error(err);
-        return null;
+        return '';
     }
-    
-}
+};

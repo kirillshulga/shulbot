@@ -1,0 +1,16 @@
+export interface IDataCurrency {
+  id: number,
+  name: string,
+  symbol: string,
+  slug: string,
+  num_market_pairs: number,
+  date_added: string,
+  tags: [string],
+  max_supply: number,
+  circulating_supply: number,
+  total_supply: number,
+  platform: any,
+  cmc_rank: number,
+  last_updated: string,
+  quote: { USD: [any] },
+}
