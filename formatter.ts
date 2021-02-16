@@ -12,7 +12,7 @@ export default async function (arr: any): Promise<string> {
             let arrowIcon7d = element.quote.USD.percent_change_7d > 0 ? '\u{2197}' : '\u{2198}';
             let percentChange7d = `7 дней: ${element.quote.USD.percent_change_7d.toFixed(1)}%${arrowIcon7d}`;
 
-            let itemFinalString = `${currencyItemString}\n${percentChange24h} ${percentChange7d}\n______________________\n\n`;
+            let itemFinalString = `${currencyItemString}\n${percentChange24h} ${percentChange7d}\n`;
             finalMessage += itemFinalString;
         });
 
