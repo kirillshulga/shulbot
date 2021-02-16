@@ -16,7 +16,6 @@ COPY src /app/src
 
 RUN npm install
 RUN npm install tsc -g
-RUN npm run build
 RUN ls -a
 
 # Bundle app source
