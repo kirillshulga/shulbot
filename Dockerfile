@@ -3,7 +3,7 @@ FROM node:latest
 # Env
 ENV BOT_TOKEN="1689886413:AAFk2WzlJB0N5z-RbZfoKrRWHfnl6gDdqpQ"
 ENV API_KEY="eb7e1537-0748-4c59-89f0-2879abc32dac"
-ENV CRON="*/6 * * * * *"
+ENV CRON="0 0 */12 * * *"
 
 # create root application folder
 WORKDIR /app
