@@ -9,12 +9,16 @@ import formatter from './formatter';
 const BOT_TOKEN: string = process.env.BOT_TOKEN || '';
 const CRON = process.env.CRON || '';
 const bot = new Telegraf(BOT_TOKEN);
+const currencyArray = ['btc', 'eth', 'bnb', 'dot', 'reef', 'kyl', 'ring', 'grt', 'lina', 'near'];
 
 bot.start((ctx) => {
   try {
     const job = new CronJob(CRON, async function() {
-      const response = await getCurrencyPrice();
-      ctx.reply(await formatter(response));
+      const currencyData = await getCurrencyPrice();
+      const resultCurrencyData = currencyArray.map(i => {
+        return currencyData.find(e => i.toUpperCase() === e.symbol);
+      });
+      ctx.reply(await formatter(resultCurrencyData));
     }, null, true, 'America/Los_Angeles');
     job.start();
   } catch (err) {
